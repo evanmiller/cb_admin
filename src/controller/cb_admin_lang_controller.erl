@@ -33,7 +33,7 @@ edit('POST', [App, Lang|Fmt], Auth) ->
     WithBlanks = Req:post_param("trans_all_with_blanks"),
     AppAtom = list_to_atom(App),
     LangFile = boss_files:lang_path(AppAtom, Lang),
-    {ok, IODevice} = file:open(LangFile, [write, append]),
+    {ok, IODevice} = file:open(LangFile, [write, append, {encoding ,utf8}]),
     lists:map(fun(Message) ->
                 Original = proplists:get_value("orig", Message),
                 Translation = proplists:get_value("trans", Message),
