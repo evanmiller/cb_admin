@@ -2,8 +2,6 @@
 -export([lang_write_to_file/4]).
 
 lang_write_to_file(IODevice, Original, Translation, BlockIdentifier) ->
-	%%OriginalEncoded = unicode:characters_to_list(boss_lang:escape_quotes(Original)),
-	%%TranslationEncoded = unicode:characters_to_list(boss_lang:escape_quotes(Translation)),
 	OriginalEncoded = boss_lang:escape_quotes(Original),
 	TranslationEncoded = boss_lang:escape_quotes(Translation),
 	case BlockIdentifier of
