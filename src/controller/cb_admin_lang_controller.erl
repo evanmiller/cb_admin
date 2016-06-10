@@ -35,8 +35,8 @@ edit('POST', [App, Lang|Fmt], Auth) ->
     LangFile = boss_files_util:lang_path(AppAtom, Lang),
     {ok, IODevice} = file:open(LangFile, [write, append]),
     lists:map(fun(Message) ->
-                Original = proplists:get_value("orig", Message),
-                Translation = proplists:get_value("trans", Message),
+                Original = binary_to_list(proplists:get_value("orig", Message)),
+                Translation = binary_to_list(proplists:get_value("trans", Message)),
                 case Translation of
                     "" -> 
                         case WithBlanks of
